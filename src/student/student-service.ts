@@ -3,6 +3,7 @@ import type {Student} from "@student/student.ts";
 export interface StudentService {
 
     getStudents(): Promise<Student[]>;
+
     getStudentByNo(no: string): Promise<Student>;
 
     getStudentByName(name: string): Promise<Student>;

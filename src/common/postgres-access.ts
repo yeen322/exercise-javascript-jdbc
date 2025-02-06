@@ -6,7 +6,7 @@ export const setConnection = async () => {
         port: 15432,
         user: "yeeun",
         password: "cAzKRZQqBX2s6RZ",
-        database: "entertainment",
+        database: "exercise",
     });
 
     await client.connect();

@@ -1,0 +1,115 @@
+###
+# 학생 전체 목록을 출력합니다.
+GET http://localhost:3000/students
+Accept: application/json
+
+###
+# 학번이 20110101인 을 출력합니다.
+GET http://localhost:3000/students/20110101
+Accept: application/json
+
+###
+# 이름이 일지매인 학생을 출력합니다.
+GET http://localhost:3000/students?name=일지매
+Accept: application/json
+###
+# 생일이 1990-03-01인 학생을 출력합니다.
+GET http://localhost:3000/students?birthday=1990-03-01
+Accept: application/json
+###
+# 학번이 20110402인 학생 이순삼을 추가하시오
+POST http://localhost:3000/students
+Content-Type: application/json
+
+{
+    "no": "20110902",
+    "name" : "이순식"
+}
+
+###
+# 학번이 20110502, 20110602, 20110702, 20110802이고,이름이 이율국, 이소일 ,심순해, 임꺽쩡 학생을 추가합니다.
+POST http://localhost:3000/students/batch
+Content-Type: application/json
+
+[
+    {
+      "no": "20110402",
+      "name" : "이율국"
+    },
+    {
+      "no": "20110602",
+      "name" : "이소일"
+    },
+    {
+      "no": "20110702",
+      "name" : "심순해"
+    },
+    {
+      "no": "20110802",
+      "name" : "임꺽정"
+    }
+]
+
+###
+# 학번이 220110902, 20111002, 20111102, 20111202이고, 이름이 이상호, 강동화, 김호산, 김정호 학생을 추가합니다.
+
+###
+# 학번 20110401인 학생의 생일을 1990-03-21로 변경합니다.
+PATCH/http://localhost:3000/students
+Content-Type: application/json
+
+{
+  "no": "20110401",
+  "birthday": "1990-03-21"
+}
+###
+# 학번이 20110501, 20110601, 20110701, 20110801인 학생의 생일을 각각 1990-03-01, 1990-04-01, 1990-05-01, 1990-06-01으로 변경합니다.
+PATCH/http://localhost:3000/students/batch
+Content-Type: application/json
+
+
+[
+    {
+        "no": "20110501",
+        "birthday": "1990-03-01"
+    },
+    {
+        "no": "20110601",
+        "birthday": "1990-04-01"
+    },
+    {
+        "no": "20110701",
+        "birthday": "1990-05-01"
+    },
+    {
+        "no": "20110801",
+        "birthday": "1990-06-01"
+    }
+]
+###
+# 학번이 20110401인 학생을 목록에서 제거합니다.
+DELETE http://localhost:3000/students
+Content-Type: application/json
+
+{
+  "no": "20110401"
+}
+###
+# 학번이 20110501, 20110601, 20110701, 20110801인 학생을 목록에서 제거합니다.
+DELETE http://localhost:3000/students/batch
+Content-Type: application/json
+
+[
+    {
+        "no": "20110501"
+    },
+    {
+        "no": "20110601"
+    },
+    {
+        "no": "20110701"
+    },
+    {
+        "no": "20110801"
+    }
+]

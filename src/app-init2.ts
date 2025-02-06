@@ -45,7 +45,7 @@ class appInit2 {
                     break;
                 case '8':
                     console.info("8. 연예관계자에 대해 연예관계자의 이름과 직속 상사의 이름을 검색하시오");
-                    result = await service.getEmpBossName();
+                    // result = await service.getEmpBossName();
                     break;
                 case '9':
                     console.info("9. 연예관계자에 대해 이름과 급여를 출력하고, 급여의 내림차순으로 정렬하시오. 단, 동일 급여일 때는 이름의 오름차순으로 정렬하시오.");
@@ -69,7 +69,7 @@ class appInit2 {
                     break;
                 case '14':
                     console.info("14. 우리 회사에 한 명의 임원이 등록되었습니다. 코드는 E903, 이름은 손진현, 관리자는 E901, 급여는 4000입니다. 알맞게 등록하시오.");
-                    result = await service.insertEmp();
+                    // result = await service.insertEmp();
                     break;
                 // case '15':
                 //     console.info("15. 연예관계자인 손진현님이 퇴직했습니다. 연예관계자 목록에서 제거하시오.");

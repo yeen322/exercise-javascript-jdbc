@@ -16,9 +16,13 @@ export class MybatisStudentService implements StudentService{
     async getStudents(): Promise<Student[]> {
         const client = await setConnection();
 
+        console.log("1");
         try {
+            console.log("2");
             const query = mybatisMapper.getStatement("student","getStudents",{},format);
+            console.log("3");
             const result = await client.query(query);
+            console.log("4");
             return result.rows;
         } catch (error) {
             console.error("Error executing query ", (error as Error).stack);
@@ -31,7 +35,7 @@ export class MybatisStudentService implements StudentService{
         const client = await setConnection();
 
         try {
-            const query = mybatisMapper.getStatement("student","getStentByNo",{no},format);
+            const query = mybatisMapper.getStatement("student","getStudentByNo",{no},format);
             const result = await client.query(query);
             return result.rows[0];
         } catch (error) {
@@ -59,7 +63,7 @@ export class MybatisStudentService implements StudentService{
         const client = await setConnection();
 
         try {
-            const query = mybatisMapper.getStatement("student","getStudentBirthday",{birthday},format);
+            const query = mybatisMapper.getStatement("student","getStudentByBirthday",{birthday},format);
             const result = await client.query(query);
             return result.rows[0];
         } catch (error) {
@@ -96,8 +100,7 @@ export class MybatisStudentService implements StudentService{
     }
     async insertStudentMulti(students: Student[]): Promise<number> {
         const client = await setConnection();
-
-
+        console.log('insertStudentMulti', students);
         try {
             await client.query("BEGIN");
 
@@ -118,6 +121,7 @@ export class MybatisStudentService implements StudentService{
             return results.reduce((sum, result ) => sum + (result.rowCount || 0), 0);
         } catch (error) {
             await client.query("ROLLBACK");
+            console.error(students);
             console.error("Error executing query ", (error as Error).stack);
             throw error;
         } finally {

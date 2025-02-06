@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding = "UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="student">
     <select id="getStudents">
-
-        SELECT * FROM student
+        SELECT *
+        FROM student
     </select>
 
     <select id="getStudentByNo">
@@ -23,23 +21,12 @@
     <select id="getStudentByBirthday">
         SELECT *
         FROM student
-        WHERE birthday = #{birthday}::date
+        WHERE birthday = #{birthday}
     </select>
 
     <insert id="insertStudent">
-        INSERT
-        INTO student (no,name,birthday)
+        INSERT INTO student (no, name, birthday)
         VALUES (#{no}, #{name}, #{birthday})
-    </insert>
-
-    <insert id="insertStudentMulti">
-        INSERT
-        INTO student (no,name,birthday)
-        VALUES
-        <foreach collection="array" item="student" separator=",">
-            (#{no}, #{name}, #{birthday})
-        </foreach>
-
     </insert>
 
     <update id="updateStudent">
@@ -48,15 +35,9 @@
         WHERE no = #{no}
     </update>
 
-
     <delete id="deleteStudentByNo">
         DELETE
         FROM student
         WHERE no = #{no}
     </delete>
-
 </mapper>
-
-
-
-
